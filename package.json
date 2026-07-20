@@ -24,6 +24,14 @@
   ],
   "author": "Kirill Zhdanov",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhdkirill/mcp-ssh-terminal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zhdkirill/mcp-ssh-terminal/issues"
+  },
+  "homepage": "https://github.com/zhdkirill/mcp-ssh-terminal#readme",
   "type": "module",
   "engines": {
     "node": ">=22"

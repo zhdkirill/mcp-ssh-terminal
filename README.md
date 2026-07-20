@@ -1,5 +1,6 @@
 # mcp-ssh-terminal
 
+[![npm](https://img.shields.io/npm/v/mcp-ssh-terminal)](https://www.npmjs.com/package/mcp-ssh-terminal)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Node.js ≥ 22](https://img.shields.io/badge/node-%E2%89%A5%2022-brightgreen)](https://nodejs.org)
 [![MCP](https://img.shields.io/badge/protocol-MCP-blueviolet)](https://modelcontextprotocol.io)
@@ -73,8 +74,16 @@ Two levels:
 
 ## Install
 
+**From npm** — nothing to do up front; register it straight with `npx` (next section). Or install globally:
+
 ```bash
-git clone https://github.com/<your-username>/mcp-ssh-terminal.git
+npm install -g mcp-ssh-terminal
+```
+
+**From source:**
+
+```bash
+git clone https://github.com/zhdkirill/mcp-ssh-terminal.git
 cd mcp-ssh-terminal
 npm install
 npm run build      # compiles TypeScript to dist/
@@ -86,6 +95,8 @@ npm test           # optional: runs the tests (keys, argv builder, ssh_config, l
 **Claude Code (CLI):**
 
 ```bash
+claude mcp add ssh -- npx -y mcp-ssh-terminal
+# or, from a source checkout:
 claude mcp add ssh -- node /path/to/mcp-ssh-terminal/dist/index.js
 ```
 
@@ -95,12 +106,14 @@ claude mcp add ssh -- node /path/to/mcp-ssh-terminal/dist/index.js
 {
   "mcpServers": {
     "ssh": {
-      "command": "node",
-      "args": ["/path/to/mcp-ssh-terminal/dist/index.js"]
+      "command": "npx",
+      "args": ["-y", "mcp-ssh-terminal"]
     }
   }
 }
 ```
+
+(For a source checkout, use `"command": "node", "args": ["/path/to/mcp-ssh-terminal/dist/index.js"]` instead.)
 
 The server speaks MCP over stdio. It writes nothing to stdout except protocol traffic (logs go to stderr), so it is safe to run under any stdio MCP host.
 
