@@ -17,10 +17,16 @@
   },
   "keywords": [
     "mcp",
+    "mcp-server",
     "ssh",
     "terminal",
-    "routeros",
-    "mikrotik"
+    "pty",
+    "shell",
+    "openssh",
+    "remote-access",
+    "interactive",
+    "ai-agent",
+    "network-automation"
   ],
   "author": "Kirill Zhdanov",
   "license": "MIT",
