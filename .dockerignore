@@ -1,0 +1,8 @@
+node_modules
+dist
+.git
+.claude
+test
+*.log
+_drive-*.mjs
+.DS_Store

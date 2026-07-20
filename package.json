@@ -1,0 +1,42 @@
+{
+  "name": "mcp-ssh-terminal",
+  "version": "0.2.0",
+  "description": "MCP server exposing persistent, interactive SSH sessions driven through the real OpenSSH client and a headless terminal emulator.",
+  "bin": {
+    "mcp-ssh-terminal": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "dev": "tsc -p tsconfig.json && node dist/index.js",
+    "test": "vitest run",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "keywords": [
+    "mcp",
+    "ssh",
+    "terminal",
+    "routeros",
+    "mikrotik"
+  ],
+  "author": "Kirill Zhdanov",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "@xterm/headless": "^6.0.0",
+    "node-pty": "^1.1.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
+  }
+}

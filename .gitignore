@@ -1,0 +1,12 @@
+node_modules/
+dist/
+*.log
+.DS_Store
+# local scratch driver scripts
+_drive-*.mjs
+# Claude Code local state (keep shared .claude/ files, if any, committable)
+.claude/worktrees/
+.claude/settings.local.json
+# Local AI knowledge bases
+.ai/knowledge/
+.cursor/memory/
