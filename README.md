@@ -121,6 +121,14 @@ The server speaks MCP over stdio. It writes nothing to stdout except protocol tr
 
 **Run it natively if you can.** The whole design delegates auth to *your* OpenSSH — config, keys, agent, known_hosts — and a container sees none of that unless you mount it in. Docker is the right choice when the consuming machine shouldn't need Node, or you want a pinned, hermetic runtime; it is the wrong choice if you rely on ssh-agent, FIDO keys, or VPN-only routes that exist on the host.
 
+Pull the prebuilt image (multi-arch: amd64 + arm64) — nothing to build locally:
+
+```bash
+docker pull ghcr.io/zhdkirill/mcp-ssh-terminal:latest
+```
+
+Or build it yourself from source:
+
 ```bash
 docker build -t mcp-ssh-terminal .
 ```
@@ -128,7 +136,7 @@ docker build -t mcp-ssh-terminal .
 Register (mounting your ssh config/keys read-only):
 
 ```bash
-claude mcp add ssh -- docker run -i --rm --init -v "$HOME/.ssh:/home/node/.ssh:ro" mcp-ssh-terminal
+claude mcp add ssh -- docker run -i --rm --init -v "$HOME/.ssh:/home/node/.ssh:ro" ghcr.io/zhdkirill/mcp-ssh-terminal
 ```
 
 Notes for container mode:

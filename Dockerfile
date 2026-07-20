@@ -1,7 +1,8 @@
 # syntax=docker/dockerfile:1
 
-# Build stage: full image so node-pty's native addon can compile.
-FROM node:22-bookworm AS build
+# Build stage: node-pty ships no linux prebuilds, so node-gyp compiles it here.
+FROM node:22-alpine AS build
+RUN apk add --no-cache python3 make g++
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
@@ -9,11 +10,9 @@ COPY tsconfig.json ./
 COPY src ./src
 RUN npm run build && npm prune --omit=dev
 
-# Runtime: slim image + the real OpenSSH client the server drives.
-FROM node:22-bookworm-slim
-RUN apt-get update \
-  && apt-get install -y --no-install-recommends openssh-client \
-  && rm -rf /var/lib/apt/lists/*
+# Runtime: alpine + the real OpenSSH client the server drives.
+FROM node:22-alpine
+RUN apk add --no-cache openssh-client libstdc++
 ENV NODE_ENV=production
 WORKDIR /app
 COPY --from=build /app/node_modules ./node_modules
