@@ -1,6 +1,6 @@
 {
   "name": "mcp-ssh-terminal",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "MCP server exposing persistent, interactive SSH sessions driven through the real OpenSSH client and a headless terminal emulator.",
   "bin": {
     "mcp-ssh-terminal": "dist/index.js"
